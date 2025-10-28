@@ -45,48 +45,56 @@ const AppSidebar: React.FC = () => {
   ];
 
   return (
-    <aside
-      data-sidebar="sidebar"
-      className={`
-        fixed left-0 top-0 h-screen border-r z-50
-        bg-background/80 backdrop-blur-xl transition-all duration-300 ease-in-out flex flex-col
-        border-border/20 border-purple-500/20
-        ${isMobile && !openMobile ? "-translate-x-full" : "translate-x-0"}
-        ${isMobile ? "w-64" : isCollapsed ? "w-[4.3rem]" : "w-64"}
-      `}
-    >
-      {/* Logo and Brand */}
-      <div className="flex-none p-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div
-            className={`
+    <>
+      {/* Overlay for mobile */}
+      {isMobile && openMobile && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+          onClick={() => setOpenMobile(false)}
+        />
+      )}
+      <aside
+        data-sidebar="sidebar"
+        className={`
+          fixed left-0 top-0 h-screen border-r z-50
+          bg-white transition-all duration-300 ease-in-out flex flex-col
+          border-purple-500/20 shadow-xl
+          ${isMobile && !openMobile ? "-translate-x-full" : "translate-x-0"}
+          ${isMobile ? "w-64" : isCollapsed ? "w-[4.3rem]" : "w-64"}
+        `}
+      >
+        {/* Logo and Brand */}
+        <div className="flex-none p-4">
+          <Link href="/" className="flex items-center gap-2">
+            <div
+              className={`
             relative h-8 w-8 rounded-lg bg-linear-to-br from-purple-600 to-pink-500
             flex items-center justify-center text-white font-bold text-xl
             ${isCollapsed && !isMobile ? "mx-auto" : ""}
           `}
-          >
-            F
-          </div>
-          {(!isCollapsed || isMobile) && (
-            <span className="text-xl font-bold bg-linear-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-              FLASHCAST
-            </span>
-          )}
-        </Link>
-      </div>
+            >
+              F
+            </div>
+            {(!isCollapsed || isMobile) && (
+              <span className="text-xl font-bold bg-linear-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+                FLASHCAST
+              </span>
+            )}
+          </Link>
+        </div>
 
-      {/* Main Navigation */}
-      <div className="flex-1 overflow-y-auto px-3 py-6 scrollbar-custom">
-        <nav className="space-y-2">
-          {mainNavItems.map((item) => {
-            const isActive = pathname === item.href;
-            const Icon = item.icon;
+        {/* Main Navigation */}
+        <div className="flex-1 overflow-y-auto px-3 py-6 scrollbar-custom">
+          <nav className="space-y-2">
+            {mainNavItems.map((item) => {
+              const isActive = pathname === item.href;
+              const Icon = item.icon;
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
                   group flex items-center gap-3 rounded-lg p-2 transition-all duration-200
                   ${isCollapsed && !isMobile ? "justify-center" : "px-4"}
                   ${
@@ -95,35 +103,35 @@ const AppSidebar: React.FC = () => {
                       : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-500"
                   }
                 `}
-              >
-                <Icon className="h-5 w-5 shrink-0" />
-                {(!isCollapsed || isMobile) && (
-                  <span className="text-sm font-medium">{item.title}</span>
-                )}
-                {item.badge && (!isCollapsed || isMobile) && (
-                  <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-orange-500 text-white">
-                    {item.badge}
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
+                >
+                  <Icon className="h-5 w-5 shrink-0" />
+                  {(!isCollapsed || isMobile) && (
+                    <span className="text-sm font-medium">{item.title}</span>
+                  )}
+                  {item.badge && (!isCollapsed || isMobile) && (
+                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-orange-500 text-white">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
-      {/* Bottom Section */}
-      <div className="flex-none px-3 pb-4">
-        {/* Bottom Navigation */}
-        <nav className="space-y-2 border-t border-orange-500/10 pt-4">
-          {bottomNavItems.map((item) => {
-            const isActive = pathname === item.href;
-            const Icon = item.icon;
+        {/* Bottom Section */}
+        <div className="flex-none px-3 pb-4">
+          {/* Bottom Navigation */}
+          <nav className="space-y-2 border-t border-orange-500/10 pt-4">
+            {bottomNavItems.map((item) => {
+              const isActive = pathname === item.href;
+              const Icon = item.icon;
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`
                   group flex items-center gap-3 rounded-lg p-2 transition-all duration-200
                   ${isCollapsed && !isMobile ? "justify-center" : "px-4"}
                   ${
@@ -132,41 +140,42 @@ const AppSidebar: React.FC = () => {
                       : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-500"
                   }
                 `}
-              >
-                <Icon className="h-5 w-5 shrink-0" />
-                {(!isCollapsed || isMobile) && (
-                  <span className="text-sm font-medium">{item.title}</span>
-                )}
-              </Link>
-            );
-          })}
+                >
+                  <Icon className="h-5 w-5 shrink-0" />
+                  {(!isCollapsed || isMobile) && (
+                    <span className="text-sm font-medium">{item.title}</span>
+                  )}
+                </Link>
+              );
+            })}
 
-          {/* Collapse Button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleSidebar();
-            }}
-            className={`
+            {/* Collapse Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSidebar();
+              }}
+              className={`
               w-full flex items-center gap-3 rounded-lg p-2 transition-all duration-200 mt-4
               ${isCollapsed && !isMobile ? "justify-center" : "px-4"}
               text-gray-300 hover:bg-purple-500/10 hover:text-purple-500
             `}
-          >
-            {isCollapsed ? (
-              <ChevronRight className="h-5 w-5" />
-            ) : (
-              <>
-                <ChevronLeft className="h-5 w-5" />
-                <span className="text-sm font-medium">Collapse</span>
-              </>
-            )}
-          </button>
-        </nav>
-      </div>
-    </aside>
+            >
+              {isCollapsed ? (
+                <ChevronRight className="h-5 w-5" />
+              ) : (
+                <>
+                  <ChevronLeft className="h-5 w-5" />
+                  <span className="text-sm font-medium">Collapse</span>
+                </>
+              )}
+            </button>
+          </nav>
+        </div>
+      </aside>
+    </>
   );
 };
 
