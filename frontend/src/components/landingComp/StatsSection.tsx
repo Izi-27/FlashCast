@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Users, TrendingUp, Network, Zap } from "lucide-react";
 
-export default function StatsSection() {
+const StatsSection = () => {
   const stats = [
     {
       value: "10K+",
@@ -59,3 +59,5 @@ export default function StatsSection() {
     </section>
   );
 }
+
+export default StatsSection;

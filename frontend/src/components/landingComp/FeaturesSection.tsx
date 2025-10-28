@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Clock, Zap, Shield, Bot } from "lucide-react";
 import FloatingCard from "../ui/FloatingCard";
 
-export default function FeaturesSection() {
+const FeaturesSection = () => {
   const features = [
     {
       icon: <Zap className="w-10 h-10" />,
@@ -77,3 +77,5 @@ export default function FeaturesSection() {
     </section>
   );
 }
+
+export default FeaturesSection;

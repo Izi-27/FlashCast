@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Target, Coins, BarChart3 } from "lucide-react";
 import FloatingCard from "../ui/FloatingCard";
 
-export default function HowItWorksSection() {
+const HowItWorksSection = () => {
   const steps = [
     {
       icon: <Target className="w-12 h-12" />,
@@ -79,3 +79,5 @@ export default function HowItWorksSection() {
     </section>
   );
 }
+
+export default HowItWorksSection;

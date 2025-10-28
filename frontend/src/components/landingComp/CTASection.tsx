@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Rocket } from "lucide-react";
 
-export default function CTASection() {
+const CTASection = () => {
   return (
     <section className="py-32 bg-black relative overflow-hidden">
       <motion.div
@@ -38,18 +39,22 @@ export default function CTASection() {
             Join thousands of traders making predictions on real-time events
           </p>
 
-          <motion.button
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0 20px 60px rgba(168, 85, 247, 0.6)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-5 bg-linear-to-r from-purple-500 to-pink-600 text-white text-lg font-bold rounded-lg inline-flex items-center gap-3"
-          >
-            Launch App Now <Rocket className="w-6 h-6" />
-          </motion.button>
+          <Link href="/dashboard">
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0 20px 60px rgba(168, 85, 247, 0.6)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-5 bg-linear-to-r from-purple-500 to-pink-600 text-white text-lg font-bold rounded-lg inline-flex items-center gap-3"
+            >
+              Launch App Now <Rocket className="w-6 h-6" />
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>
   );
 }
+
+export default CTASection;

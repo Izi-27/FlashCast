@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 
-export default function HeroSection() {
+const HeroSection = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -31,7 +32,10 @@ export default function HeroSection() {
         />
       </div>
 
-      <motion.div style={{ y, opacity }} className="container mx-auto px-4 text-center relative z-10">
+      <motion.div
+        style={{ y, opacity }}
+        className="container mx-auto px-4 text-center relative z-10"
+      >
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -40,12 +44,12 @@ export default function HeroSection() {
         >
           <motion.h1
             className="text-7xl md:text-8xl font-bold mb-6"
-            animate={{ 
+            animate={{
               textShadow: [
                 "0 0 20px rgba(168, 85, 247, 0.5)",
                 "0 0 60px rgba(168, 85, 247, 0.8)",
-                "0 0 20px rgba(168, 85, 247, 0.5)"
-              ]
+                "0 0 20px rgba(168, 85, 247, 0.5)",
+              ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -78,15 +82,23 @@ export default function HeroSection() {
           transition={{ delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
+          <Link href="/dashboard">
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 40px rgba(168, 85, 247, 0.5)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-600 text-white font-bold rounded-lg flex items-center justify-center gap-2"
+            >
+              Launch App <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(168, 85, 247, 0.5)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-600 text-white font-bold rounded-lg flex items-center justify-center gap-2"
-          >
-            Launch App <ArrowRight className="w-5 h-5" />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(168, 85, 247, 0.2)" }}
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "rgba(168, 85, 247, 0.2)",
+            }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 border-2 border-purple-500 text-white rounded-lg flex items-center justify-center gap-2"
           >
@@ -106,3 +118,5 @@ export default function HeroSection() {
     </div>
   );
 }
+
+export default HeroSection;

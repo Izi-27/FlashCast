@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Timer, TrendingUp, Trophy } from "lucide-react";
 import FloatingCard from "../ui/FloatingCard";
 
-export default function LiveMarketsSection() {
+const LiveMarketsSection = () => {
   const markets = [
     {
       id: 1,
@@ -149,3 +149,5 @@ export default function LiveMarketsSection() {
     </section>
   );
 }
+
+export default LiveMarketsSection;

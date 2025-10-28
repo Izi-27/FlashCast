@@ -1,6 +1,6 @@
 "use client";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="py-12 bg-black border-t border-purple-500/20">
       <div className="container mx-auto px-4">
@@ -30,3 +30,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

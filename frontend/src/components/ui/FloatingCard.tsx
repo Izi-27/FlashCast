@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-export default function FloatingCard({ children, delay = 0 }: { children: ReactNode, delay?: number }) {
+const FloatingCard = ({ children, delay = 0 }: { children: ReactNode, delay?: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50, rotateX: -15 }}
@@ -22,3 +22,5 @@ export default function FloatingCard({ children, delay = 0 }: { children: ReactN
     </motion.div>
   );
 }
+
+export default FloatingCard;

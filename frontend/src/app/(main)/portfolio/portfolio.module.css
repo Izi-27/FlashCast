@@ -1,0 +1,21 @@
+.colorDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+}
+
+.btcDot {
+  background-color: #ff9f43;
+}
+
+.ethDot {
+  background-color: #ee5253;
+}
+
+.solDot {
+  background-color: #0abde3;
+}
+
+.othersDot {
+  background-color: #8395a7;
+}

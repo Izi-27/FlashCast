@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-export default function Navigation() {
+const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,7 +18,9 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/90 backdrop-blur-lg border-b border-purple-500/20" : "bg-transparent"
+        scrolled
+          ? "bg-black/90 backdrop-blur-lg border-b border-purple-500/20"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -50,16 +53,23 @@ export default function Navigation() {
             >
               Connect Wallet
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 text-sm bg-linear-to-r from-purple-500 to-pink-600 text-white font-medium rounded-lg"
-            >
-              Launch App
-            </motion.button>
+            <Link href="/dashboard">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="px-4 py-2 text-sm bg-linear-to-r from-purple-500 to-pink-600 text-white font-medium rounded-lg"
+              >
+                Launch App
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>
     </motion.nav>
   );
 }
+
+export default Navigation;
