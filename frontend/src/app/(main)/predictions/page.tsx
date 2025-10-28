@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Target, TrendingUp, TrendingDown, Clock, Zap, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import {
+  Target,
+  TrendingUp,
+  TrendingDown,
+  Clock,
+  Zap,
+  ArrowUpRight,
+  ArrowDownRight,
+} from "lucide-react";
 
 const PredictionsPage = () => {
   const [selectedAsset, setSelectedAsset] = useState("BTC");
@@ -10,17 +18,69 @@ const PredictionsPage = () => {
   const [confidence, setConfidence] = useState(75);
 
   const stats = [
-    { label: "Active Predictions", value: "12", icon: <Target className="w-6 h-6" />, color: "purple" },
-    { label: "Success Rate", value: "76%", icon: <TrendingUp className="w-6 h-6" />, color: "green" },
-    { label: "Avg Time Frame", value: "24h", icon: <Clock className="w-6 h-6" />, color: "blue" },
-    { label: "Total Predictions", value: "156", icon: <Zap className="w-6 h-6" />, color: "pink" },
+    {
+      label: "Active Predictions",
+      value: "12",
+      icon: <Target className="w-6 h-6" />,
+      color: "purple",
+    },
+    {
+      label: "Success Rate",
+      value: "76%",
+      icon: <TrendingUp className="w-6 h-6" />,
+      color: "green",
+    },
+    {
+      label: "Avg Time Frame",
+      value: "24h",
+      icon: <Clock className="w-6 h-6" />,
+      color: "blue",
+    },
+    {
+      label: "Total Predictions",
+      value: "156",
+      icon: <Zap className="w-6 h-6" />,
+      color: "pink",
+    },
   ];
 
   const predictionHistory = [
-    { asset: "Bitcoin", type: "up", timeFrame: "24h", confidence: 85, result: "success", date: "2025-10-27", profit: "+$245" },
-    { asset: "Ethereum", type: "down", timeFrame: "12h", confidence: 70, result: "failed", date: "2025-10-26", profit: "-$80" },
-    { asset: "Solana", type: "up", timeFrame: "1w", confidence: 90, result: "success", date: "2025-10-25", profit: "+$320" },
-    { asset: "Cardano", type: "up", timeFrame: "3d", confidence: 82, result: "success", date: "2025-10-24", profit: "+$190" },
+    {
+      asset: "Bitcoin",
+      type: "up",
+      timeFrame: "24h",
+      confidence: 85,
+      result: "success",
+      date: "2025-10-27",
+      profit: "+$245",
+    },
+    {
+      asset: "Ethereum",
+      type: "down",
+      timeFrame: "12h",
+      confidence: 70,
+      result: "failed",
+      date: "2025-10-26",
+      profit: "-$80",
+    },
+    {
+      asset: "Solana",
+      type: "up",
+      timeFrame: "1w",
+      confidence: 90,
+      result: "success",
+      date: "2025-10-25",
+      profit: "+$320",
+    },
+    {
+      asset: "Cardano",
+      type: "up",
+      timeFrame: "3d",
+      confidence: 82,
+      result: "success",
+      date: "2025-10-24",
+      profit: "+$190",
+    },
   ];
 
   return (
@@ -57,17 +117,24 @@ const PredictionsPage = () => {
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-zinc-500 text-sm font-medium">{stat.label}</p>
+                  <p className="text-zinc-500 text-sm font-medium">
+                    {stat.label}
+                  </p>
                   <h3 className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mt-1">
                     {stat.value}
                   </h3>
                 </div>
-                <div className={`p-3 rounded-xl bg-linear-to-br ${
-                  stat.color === "purple" ? "from-purple-500 to-purple-600" :
-                  stat.color === "green" ? "from-green-500 to-green-600" :
-                  stat.color === "blue" ? "from-blue-500 to-blue-600" :
-                  "from-pink-500 to-pink-600"
-                } text-white`}>
+                <div
+                  className={`p-3 rounded-xl bg-linear-to-br ${
+                    stat.color === "purple"
+                      ? "from-purple-500 to-purple-600"
+                      : stat.color === "green"
+                      ? "from-green-500 to-green-600"
+                      : stat.color === "blue"
+                      ? "from-blue-500 to-blue-600"
+                      : "from-pink-500 to-pink-600"
+                  } text-white`}
+                >
                   {stat.icon}
                 </div>
               </div>
@@ -90,7 +157,9 @@ const PredictionsPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Asset Selection */}
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-zinc-700">Asset</label>
+                <label className="text-sm font-semibold text-zinc-700">
+                  Asset
+                </label>
                 <div className="grid grid-cols-3 gap-3">
                   {["BTC", "ETH", "SOL"].map((asset) => (
                     <button
@@ -111,7 +180,9 @@ const PredictionsPage = () => {
 
               {/* Prediction Type */}
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-zinc-700">Prediction Type</label>
+                <label className="text-sm font-semibold text-zinc-700">
+                  Prediction Type
+                </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
@@ -142,7 +213,9 @@ const PredictionsPage = () => {
 
               {/* Time Frame */}
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-zinc-700">Time Frame</label>
+                <label className="text-sm font-semibold text-zinc-700">
+                  Time Frame
+                </label>
                 <select
                   title="time"
                   className="w-full p-4 rounded-xl bg-white border-2 border-purple-100 focus:border-purple-400 focus:outline-none text-zinc-800 font-medium"
@@ -191,10 +264,10 @@ const PredictionsPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="p-6 bg-white rounded-xl border-2 border-purple-100 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
+          className="p-4 md:p-6 bg-white rounded-xl border-2 border-purple-100 hover:border-purple-200 hover:shadow-lg transition-all duration-300"
         >
-          <h2 className="text-2xl font-bold text-zinc-800 mb-6 flex items-center gap-2">
-            <Clock className="w-6 h-6 text-purple-600" />
+          <h2 className="text-xl md:text-2xl font-bold text-zinc-800 mb-4 md:mb-6 flex items-center gap-2">
+            <Clock className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
             Prediction History
           </h2>
           <div className="space-y-4">
@@ -204,39 +277,52 @@ const PredictionsPage = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + index * 0.1 }}
-                className="flex items-center justify-between p-4 rounded-xl bg-linear-to-r from-purple-50/50 to-pink-50/50 border border-purple-100 hover:border-purple-200 transition-all duration-300"
+                className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl bg-linear-to-r from-purple-50/50 to-pink-50/50 border border-purple-100 hover:border-purple-200 transition-all duration-300 space-y-4 md:space-y-0"
               >
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-xl ${
-                    prediction.type === "up"
-                      ? "bg-linear-to-br from-green-500 to-emerald-600"
-                      : "bg-linear-to-br from-red-500 to-rose-600"
-                  }`}>
+                  <div
+                    className={`p-3 rounded-xl shrink-0 ${
+                      prediction.type === "up"
+                        ? "bg-linear-to-br from-green-500 to-emerald-600"
+                        : "bg-linear-to-br from-red-500 to-rose-600"
+                    }`}
+                  >
                     {prediction.type === "up" ? (
                       <ArrowUpRight className="w-5 h-5 text-white" />
                     ) : (
                       <ArrowDownRight className="w-5 h-5 text-white" />
                     )}
                   </div>
-                  <div>
-                    <p className="font-bold text-zinc-800">{prediction.asset}</p>
-                    <p className="text-sm text-zinc-500">
-                      {prediction.confidence}% confidence • {prediction.timeFrame}
+                  <div className="min-w-0">
+                    <p className="font-bold text-zinc-800">
+                      {prediction.asset}
+                    </p>
+                    <p className="text-sm text-zinc-500 truncate">
+                      {prediction.confidence}% confidence •{" "}
+                      {prediction.timeFrame}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-zinc-500 font-medium">{prediction.date}</span>
-                  <span className={`font-bold ${
-                    prediction.result === "success" ? "text-green-600" : "text-red-600"
-                  }`}>
+                <div className="flex flex-wrap items-center gap-4 ml-[52px] md:ml-0">
+                  <span className="text-sm text-zinc-500 font-medium order-1 md:order-0">
+                    {prediction.date}
+                  </span>
+                  <span
+                    className={`font-bold order-2 md:order-0 ${
+                      prediction.result === "success"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
                     {prediction.profit}
                   </span>
-                  <span className={`px-4 py-1.5 rounded-full text-sm font-semibold ${
-                    prediction.result === "success"
-                      ? "bg-green-50 text-green-600 border border-green-200"
-                      : "bg-red-50 text-red-600 border border-red-200"
-                  }`}>
+                  <span
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold order-3 md:order-0 ${
+                      prediction.result === "success"
+                        ? "bg-green-50 text-green-600 border border-green-200"
+                        : "bg-red-50 text-red-600 border border-red-200"
+                    }`}
+                  >
                     {prediction.result}
                   </span>
                 </div>
