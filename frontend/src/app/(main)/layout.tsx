@@ -5,6 +5,8 @@ import Link from "next/link";
 import AppSidebar from "@/components/shared/appsidebar";
 import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 import { Menu } from "lucide-react";
+import LineraWalletConnect from "@/components/shared/LineraWalletConnect";
+import { Toaster } from "sonner";
 
 const PlatformHeader = () => {
   const router = useRouter();
@@ -102,12 +104,9 @@ const PlatformHeader = () => {
         )}
 
         <div className="flex items-center gap-4">
-          <button
-            type="button"
-            className="px-4 py-2 text-sm rounded-lg border border-purple-200 text-purple-600 hover:bg-purple-50 transition-all"
-          >
-            Connect Wallet
-          </button>
+          <div className="relative inline-block">
+            <LineraWalletConnect />
+          </div>
           <button
             type="button"
             className="px-4 py-2 text-sm bg-linear-to-r from-purple-600 to-pink-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
@@ -166,6 +165,7 @@ const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <PlatformContent>{children}</PlatformContent>
+      <Toaster position="bottom-right" expand richColors closeButton />
     </SidebarProvider>
   );
 };
